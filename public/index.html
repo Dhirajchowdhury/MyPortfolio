@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  
+  <link rel="stylesheet" href="style.css" >
+ 
+</head>
+<body>
+  <header>
+    <img src="./Images/Dhiraj image.jpg" alt="Profile Picture" class="profile-pic" />
+    <h1>Dhiraj's Portfolio</h1>
+    <h3>Full Stack Developer </h3>
+    <button id="themeToggle">🌙 Dark Mode</button>
+
+  </header>
+
+  <main>
+    <section class="about">
+  <div class="about-content">
+    <h2>About Me</h2>
+    <p>
+     Hi, I'm Dhiraj Kumar Chowdhury, a 2nd-year B.Tech Computer Science student at Heritage Institute of Technology. I'm passionate about software engineering and continuously work on upskilling myself. I specialize in web development and am actively sharpening my Data Structures and Algorithms skills using C/C++. I enjoy building efficient, scalable solutions and collaborating on innovative tech projects. Beyond tech, I love traveling, bike riding, and taking on team management roles. I thrive in dynamic environments and enjoy leading and contributing to group efforts. My goal is to become a versatile software engineer with strong technical and leadership skills. Always eager to learn, adapt, and grow in this ever-evolving tech world.
+    </p>
+  </div>
+
+  
+  <div class="about-image">
+    <img src="./images/about me 1.jpg" alt="Dhiraj Kumar Chowdhury">
+  </div>
+</section>
+
+    <section class="skills">
+  <h2>My Skills</h2>
+  <ul class="skill-list">
+    <li>
+      <img src="./images/html logo.jpeg" alt="HTML icon" />
+      HTML5
+    </li>
+    <li>
+      <img src="./images/css logo.jpeg" alt="CSS icon" />
+      CSS3
+    </li>
+    <li>
+      <img src="./images/js logo.png" alt="JS icon" />
+      JavaScript
+    </li>
+    <li>
+      <img src="./images/react logo.jpg" alt="React icon" />
+      React.js
+    </li>
+    <li>
+      <img src="./images/Node.js_logo.png" alt="Node icon" />
+      Node.js
+    </li>
+    <li>
+      <img src="./images/mongodb-logo.png" alt="MongoDB icon" />
+      MongoDB
+    </li>
+    <li>
+      <img src="./images/github logo.png" alt="Git icon" />
+      Git & GitHub
+    </li>
+    <li>
+      <img src="./images/c++ logo.png" alt="C++ icon" />
+      C/C++
+    </li>
+  </ul>
+</section>
+
+
+
+    <section class="section projects">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="./images/project image portfolio website.png" alt="Project 1">
+          <h3>Portfolio Website</h3>
+        </div>
+        <div class="project-card">
+          <img src="./images/project image to do list.png" alt="Project 2">
+          <h3>To-Do App</h3>
+        </div>
+        <div class="project-card">
+          <img src="./images/project image weather dashboard.png" alt="Project 3">
+          <h3>Weather Dashboard</h3>
+        </div>
+        <div class="project-card">
+          <img src="./images/project image chatbot ui.png" alt="Project 4">
+          <h3>Chatbot UI</h3>
+        </div>
+        <div class="project-card">
+          <img src="./images/project image ecommerce.png" alt="Project 5">
+          <h3>E-commerce Template</h3>
+        </div>
+        <div class="project-card">
+          <img src="./images/project image analytics dashboard.png" alt="Project 6">
+          <h3>Analytics Dashboard</h3>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="chat-bubble" onclick="toggleChat()">💬 Ask anything about me</div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <img src="./images/Dhiraj image.jpg" class="chat-avatar" alt="Chat Avatar">
+      Chat with Me
+    </div>
+    <div class="chat-body" id="chatBody"> </div>
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  
+  
+
+ 
+<footer class="footer">
+  <h2>Contact Me</h2>
+  <div class="contact-info">
+    <p><strong>Email:</strong> dhirajchowdhury01@gmail.com</p>
+    <p><strong>Phone:</strong> +91 9748798629</p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/dhiraj__chowdhury?igsh=dXdxeDBvN3hoMGE=&utm_source=ig_contact_invite" target="_blank">Dhiraj__chowdhury</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dhiraj-chowdhury-4a2a452b0" target="_blank">Linkedin / Dhiraj chowdhury</a></p>
+  </div>
+</footer>
+
+
+<script src="chatbot.js"></script>
+
+</body>
+</html>

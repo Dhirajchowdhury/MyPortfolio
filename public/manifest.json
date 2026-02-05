@@ -1,0 +1,15 @@
+{
+  "short_name": "Dhiraj Portfolio",
+  "name": "Dhiraj Chowdhury - Full Stack Developer Portfolio",
+  "icons": [
+    {
+      "src": "Images/Dhiraj image.jpg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#5D866C",
+  "background_color": "#F5F5F0"
+}
