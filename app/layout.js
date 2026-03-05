@@ -38,36 +38,12 @@ export default function RootLayout({ children }) {
       })
     }
 
-    // Console Easter Egg
-    console.log(`
-    ╔═══════════════════════════════════════════════════════╗
-    ║                                                       ║
-    ║   👋 Hey there, fellow developer!                    ║
-    ║                                                       ║
-    ║   I see you're checking out the console.             ║
-    ║   Nice! I like curious minds.                        ║
-    ║                                                       ║
-    ║   This portfolio is built with:                      ║
-    ║   • Next.js 14 (App Router)                          ║
-    ║   • Tailwind CSS                                     ║
-    ║   • GSAP + ScrollTrigger                             ║
-    ║   • Framer Motion                                    ║
-    ║   • Three.js                                         ║
-    ║   • Lenis (smooth scroll)                            ║
-    ║                                                       ║
-    ║   Want to collaborate? Let's build something cool!   ║
-    ║                                                       ║
-    ║   📧 [YOUR_EMAIL]                                    ║
-    ║   🐙 [GITHUB_URL]                                    ║
-    ║                                                       ║
-    ╚═══════════════════════════════════════════════════════╝
-    `)
-  }, [])
+      }, [])
 
   return (
     <html lang="en">
       <head>
-        <title>[YOUR_NAME] | Full Stack Developer</title>
+        <title>Dhiraj Kumar Chowdhury | Full Stack Developer</title>
         <meta name="description" content="Full Stack Developer specializing in MERN, AI/ML, and Blockchain. Based in Kolkata, India." />
       </head>
       <body>
