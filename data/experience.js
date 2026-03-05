@@ -1,0 +1,38 @@
+export const experience = [
+  {
+    id: 1,
+    role: '[ROLE_1]',
+    organization: '[ORG_NAME_1]',
+    duration: '[DATE_RANGE_1]',
+    description: '[DESCRIPTION_1]',
+    tech: ['React', 'Node.js', 'MongoDB'],
+    side: 'left',
+  },
+  {
+    id: 2,
+    role: '[ROLE_2]',
+    organization: '[ORG_NAME_2]',
+    duration: '[DATE_RANGE_2]',
+    description: '[DESCRIPTION_2]',
+    tech: ['Python', 'TensorFlow', 'OpenAI'],
+    side: 'right',
+  },
+  {
+    id: 3,
+    role: '[ROLE_3]',
+    organization: '[ORG_NAME_3]',
+    duration: '[DATE_RANGE_3]',
+    description: '[DESCRIPTION_3]',
+    tech: ['Solidity', 'Web3.js', 'Hardhat'],
+    side: 'left',
+  },
+  {
+    id: 4,
+    role: '[ROLE_4]',
+    organization: '[ORG_NAME_4]',
+    duration: '[DATE_RANGE_4]',
+    description: '[DESCRIPTION_4]',
+    tech: ['Next.js', 'Tailwind', 'Vercel'],
+    side: 'right',
+  },
+]

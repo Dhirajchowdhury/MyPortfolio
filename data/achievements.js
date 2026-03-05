@@ -1,0 +1,58 @@
+export const achievements = [
+  {
+    id: 1,
+    title: '[ACHIEVEMENT_TITLE_1]',
+    issuer: '[ISSUER_1]',
+    date: '[DATE_1]',
+    icon: '🏆',
+  },
+  {
+    id: 2,
+    title: '[ACHIEVEMENT_TITLE_2]',
+    issuer: '[ISSUER_2]',
+    date: '[DATE_2]',
+    icon: '🎖️',
+  },
+  {
+    id: 3,
+    title: '[ACHIEVEMENT_TITLE_3]',
+    issuer: '[ISSUER_3]',
+    date: '[DATE_3]',
+    icon: '📜',
+  },
+  {
+    id: 4,
+    title: '[ACHIEVEMENT_TITLE_4]',
+    issuer: '[ISSUER_4]',
+    date: '[DATE_4]',
+    icon: '⭐',
+  },
+  {
+    id: 5,
+    title: '[ACHIEVEMENT_TITLE_5]',
+    issuer: '[ISSUER_5]',
+    date: '[DATE_5]',
+    icon: '🏅',
+  },
+  {
+    id: 6,
+    title: '[ACHIEVEMENT_TITLE_6]',
+    issuer: '[ISSUER_6]',
+    date: '[DATE_6]',
+    icon: '🎯',
+  },
+  {
+    id: 7,
+    title: '[ACHIEVEMENT_TITLE_7]',
+    issuer: '[ISSUER_7]',
+    date: '[DATE_7]',
+    icon: '💎',
+  },
+  {
+    id: 8,
+    title: '[ACHIEVEMENT_TITLE_8]',
+    issuer: '[ISSUER_8]',
+    date: '[DATE_8]',
+    icon: '🚀',
+  },
+]

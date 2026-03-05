@@ -1,210 +1,225 @@
-# 🚀 MERN Stack Portfolio Website
+# 🚀 Next.js Portfolio - World-Class Developer Portfolio
 
-A modern, fully responsive portfolio website built with the MERN stack (MongoDB, Express.js, React, Node.js) featuring smooth animations, dark theme, and a functional contact form.
+A jaw-dropping, futuristic portfolio website built with Next.js 14, featuring dark glassmorphism design, GSAP animations, Three.js effects, and physics-based interactions.
 
-## ✨ Features
+## ✨ Features Implemented
 
-- **Modern UI/UX** - Clean, professional design with smooth animations using Framer Motion
-- **Fully Responsive** - Works perfectly on all devices (mobile, tablet, desktop)
-- **Dark Theme** - Eye-friendly dark mode with gradient accents
-- **MERN Stack** - Full-stack application with MongoDB database
-- **Contact Form** - Functional contact form with backend API
-- **Project Showcase** - Filterable project gallery
-- **Skills Section** - Display your tech stack with icons
-- **Fast Performance** - Built with Vite for lightning-fast development and builds
+### 🎨 Design System
+- **Dark Glassmorphism Theme** - Premium frosted glass effects throughout
+- **Domain Color Coding** - Cyan (Frontend), Green (AI/ML), Purple (Blockchain), White (Full Stack)
+- **Custom Cursor** - Glowing cyan orb with hover scaling
+- **Smooth Scroll** - Lenis integration for buttery smooth scrolling
+- **Noise Texture** - Subtle grain overlay for premium feel
+- **HUD Corners** - Futuristic L-shaped corner brackets
+
+### 📦 Completed Sections
+
+#### 0. Preloader ✅
+- Glitch text animation with GSAP TextPlugin
+- Progress bar with cyan glow
+- Burst exit animation
+
+#### 1. Navbar ✅
+- Transparent → frosted glass on scroll
+- Active section highlighting
+- Mobile hamburger menu with staggered animations
+- Smooth scroll to sections
+
+#### 2. Hero Section ✅
+- HUD-style box with glowing corners
+- Kinetic split text animation (roles cycle with flying letters)
+- Profile photo with scanning effect and geometric overlay
+- Aurora gradient blob background
+- Three.js star particle field
+- Social links with hover effects
+
+#### 3. Tech Bike Scroll Sequence ✅
+- GSAP ScrollTrigger pinned animation
+- Tech icons fly in from random directions
+- Assemble into Royal Enfield silhouette
+- Wheels spin continuously
+- Bike rides off screen
+- Grid perspective background
+
+#### 4. About + ID Card Section ✅
+- Split layout: scrollable content + sticky ID card
+- **ID Card Features:**
+  - Metallic clip at top
+  - Physics-based draggable ribbons
+  - 3D mouse parallax tilt
+  - Holographic shimmer following mouse
+  - Click to flip (180° rotation)
+  - Front: Photo, name, skills, college info
+  - Back: QR code, quote, contact info, magnetic stripe
+
+#### 5. Photo Marquee ✅
+- Infinite horizontal scrolling
+- Tilted photos (±2deg alternating)
+- Glassmorphism frames
+- Gradient edge masks
+- Pause on hover
+
+#### 6. Skills Section ✅
+- Filterable by domain (All, Frontend, Backend, AI/ML, Blockchain, Tools)
+- GSAP entrance animation (fly in from random directions)
+- Domain-colored glow borders
+- Hover scale effects
+- 25+ tech stack icons
+
+### 🎯 Remaining Sections (Placeholders Added)
+
+- **Projects** - Filterable project cards with hover effects
+- **Experience/Timeline** - Vertical glowing timeline
+- **Achievements** - Grid with shimmer animations
+- **Blog** - 3 featured articles with tilt effect
+- **Contact** - Form + 3D grid background
+- **Footer** ✅ - Completed with gradient line and social links
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- React 18
-- Vite
-- Framer Motion (animations)
-- React Icons
-- React Router DOM
-- Axios
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- CORS
-- Dotenv
-
-## 📦 Installation
-
-### Prerequisites
-- Node.js (v18 or higher)
-- MongoDB (local or Atlas)
-- npm or yarn
-
-### 1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd MyPortfolio
-```
-
-### 2. Install Frontend Dependencies
-```bash
-npm install
-```
-
-### 3. Install Backend Dependencies
-```bash
-cd backend
-npm install
-cd ..
-```
-
-### 4. Setup Environment Variables
-Create a `.env` file in the `backend` directory:
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/portfolio
-GEMINI_API_KEY=your_gemini_api_key_here
-```
-
-### 5. Start MongoDB
-Make sure MongoDB is running on your system:
-```bash
-# For Windows
-net start MongoDB
-
-# For Mac/Linux
-sudo systemctl start mongod
-```
-
-## 🚀 Running the Application
-
-### Development Mode
-
-**Terminal 1 - Start Backend:**
-```bash
-cd backend
-npm start
-```
-
-**Terminal 2 - Start Frontend:**
-```bash
-npm run dev
-```
-
-The frontend will run on `http://localhost:3000`
-The backend API will run on `http://localhost:5000`
-
-### Production Build
-```bash
-npm run build
-npm run preview
-```
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS + CSS Modules
+- **Animations:** GSAP (ScrollTrigger, TextPlugin), Framer Motion
+- **3D:** Three.js, @react-three/fiber, @react-three/drei
+- **Smooth Scroll:** Lenis
+- **Physics:** React Spring, Matter.js (for ribbons)
+- **Icons:** React Icons, Simple Icons
+- **Deployment:** Vercel
 
 ## 📁 Project Structure
 
 ```
-MyPortfolio/
-├── backend/
-│   ├── server.js          # Express server & API routes
-│   ├── package.json       # Backend dependencies
-│   └── .env              # Environment variables
-├── public/
-│   └── Images/           # Project images & assets
-├── src/
-│   ├── components/       # React components
+nextjs-portfolio/
+├── app/
+│   ├── layout.js          # Root layout with Lenis, cursor, preloader
+│   ├── page.js            # Main page with all sections
+│   └── globals.css        # Global styles, design system
+├── components/
+│   ├── ui/
+│   │   ├── CustomCursor.jsx
+│   │   ├── ScrollProgress.jsx
 │   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Contact.jsx
 │   │   └── Footer.jsx
-│   ├── App.jsx           # Main App component
-│   ├── main.jsx          # React entry point
-│   └── index.css         # Global styles
-├── index.html            # HTML template
-├── vite.config.js        # Vite configuration
-└── package.json          # Frontend dependencies
+│   ├── sections/
+│   │   ├── Preloader.jsx
+│   │   ├── Hero.jsx
+│   │   ├── TechBike.jsx
+│   │   ├── About.jsx
+│   │   ├── PhotoMarquee.jsx
+│   │   └── Skills.jsx
+│   ├── three/
+│   │   └── HeroParticles.jsx
+│   └── id-card/
+│       ├── IDCard.jsx
+│       ├── Ribbon.jsx
+│       ├── CardFront.jsx
+│       └── CardBack.jsx
+├── data/
+│   ├── skills.js
+│   ├── projects.js
+│   ├── experience.js
+│   ├── achievements.js
+│   └── blog.js
+└── public/
+    └── images/           # Add your images here
 ```
 
-## 🎨 Customization
+## 🚀 Getting Started
 
-### Update Personal Information
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn
 
-1. **Hero Section** - Edit `src/components/Hero.jsx`
-2. **About Section** - Edit `src/components/About.jsx`
-3. **Projects** - Update projects array in `src/components/Projects.jsx`
-4. **Skills** - Modify skills in `src/components/Skills.jsx`
-5. **Contact Info** - Update contact details in `src/components/Contact.jsx`
+### Installation
 
-### Change Colors
-Edit CSS variables in `src/index.css`:
-```css
-:root {
-  --primary: #6366f1;
-  --secondary: #8b5cf6;
-  --accent: #ec4899;
-  /* ... */
-}
-```
-
-### Add Your Images
-Replace images in `public/Images/` folder:
-- `Dhiraj image.jpg` - Your profile photo
-- `about me 1.jpg` - About section image
-- Project images for the projects section
-
-## 📡 API Endpoints
-
-### Contact Form
-```
-POST /api/contact
-Body: { name, email, message }
-```
-
-### Get All Contacts (Admin)
-```
-GET /api/contacts
-```
-
-### Gemini AI (Optional)
-```
-POST /api/gemini
-Body: { prompt }
-```
-
-## 🔧 Troubleshooting
-
-### Port Already in Use
+1. **Navigate to project:**
 ```bash
-# Change port in vite.config.js or backend/.env
+cd nextjs-portfolio
 ```
 
-### MongoDB Connection Error
-- Ensure MongoDB is running
-- Check MONGODB_URI in .env file
-- For MongoDB Atlas, whitelist your IP address
-
-### Module Not Found
+2. **Install dependencies:**
 ```bash
-# Clear node_modules and reinstall
-rm -rf node_modules package-lock.json
 npm install
 ```
 
+3. **Add your images:**
+Place your images in `public/images/`:
+- `profile.jpg` - Your profile photo
+- `photo1.jpg` to `photo6.jpg` - Personal photos for marquee
+- `project1.jpg` to `project6.jpg` - Project screenshots
+
+4. **Update placeholders:**
+Search for `[YOUR_NAME]`, `[YOUR_EMAIL]`, `[COLLEGE_NAME]`, etc. and replace with your actual information.
+
+5. **Run development server:**
+```bash
+npm run dev
+```
+
+6. **Open browser:**
+Navigate to `http://localhost:3000`
+
+## 🎨 Customization
+
+### Colors
+Edit `app/globals.css`:
+```css
+:root {
+  --accent-cyan: #00f5ff;
+  --accent-green: #39ff14;
+  --accent-purple: #7c3aed;
+}
+```
+
+### Content
+Update data files in `/data` folder:
+- `skills.js` - Your tech stack
+- `projects.js` - Your projects
+- `experience.js` - Work history
+- `achievements.js` - Awards & certifications
+- `blog.js` - Blog posts
+
+### Fonts
+Current fonts (loaded from Google Fonts):
+- **Headings:** Space Grotesk
+- **Body:** Inter
+- **Code:** JetBrains Mono
+
+Change in `app/globals.css` if needed.
+
+## 📱 Responsive Design
+
+- **Desktop (1280px+):** Full experience with all animations
+- **Tablet (768px-1279px):** Adapted layouts, scaled elements
+- **Mobile (<768px):** Single column, Three.js replaced with SVG, touch-friendly
+
+## ⚡ Performance
+
+- Lazy loading for Three.js components
+- Dynamic imports with `ssr: false`
+- Optimized images with Next.js Image component
+- GSAP context cleanup
+- Respects `prefers-reduced-motion`
+
+## 🎯 Next Steps
+
+1. Complete remaining sections (Projects, Experience, Blog, Contact)
+2. Add real content and images
+3. Test across all devices
+4. Deploy to Vercel
+5. Connect custom domain
+
 ## 📝 License
 
-This project is open source and available under the MIT License.
+MIT License - feel free to use this template for your own portfolio!
 
 ## 👤 Author
 
-**Dhiraj Chowdhury**
+**[YOUR_NAME]**
 - GitHub: [@yourusername](https://github.com/yourusername)
 - LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-
-## 🙏 Acknowledgments
-
-- Framer Motion for animations
-- React Icons for icon library
-- Vite for blazing fast builds
+- Email: your.email@example.com
 
 ---
 
-Made with ❤️ using MERN Stack
+Built with ❤️ using Next.js, GSAP, Three.js, and lots of coffee ☕
