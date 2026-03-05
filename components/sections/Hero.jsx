@@ -17,20 +17,31 @@ const roles = [
   'Full Stack Developer',
   'AI/ML Builder',
   'Blockchain Dev',
-  'Frontend Engineer'
+  'Frontend Engineer',
 ]
 
 export default function Hero() {
-  const roleRef = useRef(null)
+  const roleRef    = useRef(null)
+  const cursorRef  = useRef(null)
   const currentRoleIndex = useRef(0)
 
   useEffect(() => {
     if (!roleRef.current) return
 
+    // Blinking cursor animation
+    if (cursorRef.current) {
+      gsap.to(cursorRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'steps(1)',
+      })
+    }
+
     const animateRole = () => {
       const letters = roleRef.current.querySelectorAll('.letter')
-      
-      // Scatter out
+
       gsap.to(letters, {
         x: () => gsap.utils.random(-200, 200),
         y: () => gsap.utils.random(-200, 200),
@@ -39,19 +50,16 @@ export default function Hero() {
         stagger: 0.02,
         ease: 'power2.in',
         onComplete: () => {
-          // Change role
           currentRoleIndex.current = (currentRoleIndex.current + 1) % roles.length
           const newRole = roles[currentRoleIndex.current]
-          
-          // Update text
+
           roleRef.current.innerHTML = newRole
             .split('')
             .map((char) => `<span class="letter inline-block">${char === ' ' ? '&nbsp;' : char}</span>`)
             .join('')
-          
+
           const newLetters = roleRef.current.querySelectorAll('.letter')
-          
-          // Fly in from random directions
+
           gsap.fromTo(
             newLetters,
             {
@@ -98,13 +106,16 @@ export default function Hero() {
       }
     )
 
-    // Loop animation
     const interval = setInterval(animateRole, 3000)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ paddingTop: '10px' }} // ← clears navbar height + breathing room
+    >
       {/* Particles Background */}
       <HeroParticles />
 
@@ -121,59 +132,54 @@ export default function Hero() {
             y: ['-50%', '-55%', '-45%', '-50%'],
             scale: [1, 1.1, 0.9, 1],
           }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
       {/* Main HUD Container */}
-      <div className="relative z-10 w-[90%] md:w-[70%] max-w-5xl">
+     {/* Main HUD Container */}
+        <div className="relative z-10 w-[90%] md:w-[75%] max-w-5xl" style={{ marginTop: '2.5rem' }}>
         <motion.div
-          className="hud-corners glass p-8 md:p-12 lg:p-16 rounded-2xl relative"
+          className="hud-corners glass p-8 md:p-10 lg:p-12 rounded-2xl relative"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Bottom corners */}
-          <div className="corner-bottom-left"></div>
-          <div className="corner-bottom-right"></div>
+          <div className="corner-bottom-left" />
+          <div className="corner-bottom-right" />
 
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            {/* Photo with scanning effect */}
+          <div className="flex flex-col md:flex-row items-center gap-7 md:gap-11">
+
+            {/* ── Photo ──────────────────────────────────────────── */}
             <motion.div
-              className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0"
+              className="relative flex-shrink-0"
+              style={{ width: '620px', height: '400px' }} // smaller image
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="relative w-full h-full rounded-2xl overflow-hidden glow-cyan">
+              <div
+                className="relative w-full h-full overflow-hidden"
+                style={{
+                  borderRadius: '20px',
+                  boxShadow: '0 0 24px rgba(0,245,255,0.35)',
+                }}
+              >
                 <img
-                  src="/images/profile.jpg"
-                  alt="[YOUR_NAME]"
+                  src="/My_image02.jpeg"
+                  alt="Dhiraj Kumar Chowdhury"
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/300x300/0a0a0f/00f5ff?text=[YOUR_PHOTO]'
-                  }}
                 />
-                
-                {/* Scanning overlay */}
+
+                {/* Scanning line */}
                 <motion.div
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background: 'linear-gradient(180deg, transparent 0%, var(--accent-cyan) 50%, transparent 100%)',
-                    opacity: 0.3,
+                    opacity: 0.25,
                   }}
-                  animate={{
-                    y: ['-100%', '200%'],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
+                  animate={{ y: ['-100%', '200%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                 />
 
                 {/* Geometric overlay */}
@@ -191,9 +197,7 @@ export default function Hero() {
                     transition={{ duration: 2, delay: 0.6 }}
                   />
                   <motion.circle
-                    cx="150"
-                    cy="150"
-                    r="100"
+                    cx="150" cy="150" r="100"
                     fill="none"
                     stroke="var(--accent-cyan)"
                     strokeWidth="1"
@@ -205,91 +209,177 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Text Content */}
+            {/* ── Text Content ────────────────────────────────────── */}
             <div className="flex-1 text-center md:text-left">
+
+              {/* Name */}
               <motion.h1
-                className="text-5xl md:text-7xl lg:text-8xl font-space font-bold mb-4"
+                className="text-4xl md:text-6xl lg:text-7xl font-space font-bold mb-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <span className="text-gradient-cyan">[YOUR_NAME]</span>
+                <span className="text-gradient-cyan">Dhiraj Kumar Chowdhury</span>
               </motion.h1>
 
-              {/* Kinetic Role Text */}
-              <div className="mb-6 h-16 md:h-20 flex items-center justify-center md:justify-start">
+              {/* Kinetic Role Text + blinking cursor */}
+              <div className="mb-7 h-14 md:h-16 flex items-center justify-center md:justify-start">
                 <h2
                   ref={roleRef}
-                  className="text-2xl md:text-4xl font-space font-semibold text-white"
-                  style={{ minHeight: '3rem' }}
-                >
-                  Full Stack Developer
-                </h2>
+                  className="text-xl md:text-3xl font-space font-semibold text-white"
+                  style={{ minHeight: '2.5rem' }}
+                />
+                {/* Blinking cursor */}
+                <span
+                  ref={cursorRef}
+                  style={{
+                    display: 'inline-block',
+                    width: '3px',
+                    height: '1.6rem',
+                    backgroundColor: '#00f5ff',
+                    marginLeft: '4px',
+                    borderRadius: '2px',
+                    boxShadow: '0 0 8px #00f5ff',
+                    flexShrink: 0,
+                    alignSelf: 'center',
+                  }}
+                />
               </div>
 
+              {/* Bio */}
               <motion.p
-                className="text-secondary text-lg md:text-xl mb-8 max-w-2xl"
+                className="text-secondary text-base md:text-lg mb-9 max-w-2xl"
+                style={{ marginBottom: '1rem' }} 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                2nd-year CSE student from Kolkata, India. Building digital experiences
-                across Frontend, Full Stack, AI/ML, and Blockchain domains.
+                2nd-year CSE student at Heritage Institute Of Technology, Kolkata.
+                Building digital experiences across Frontend, Full Stack, AI/ML, and Blockchain.
               </motion.p>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons — side by side, touching, pill shaped */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 mb-8 justify-center md:justify-start"
+                className="flex justify-center md:justify-start mb-9"
+                style={{ marginBottom: '1rem' }} 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1 }}
               >
-                <a
-                  href="#projects"
-                  className="px-8 py-3 bg-cyan text-dark rounded-full font-semibold hover:scale-105 transition-transform glow-cyan hoverable"
-                >
-                  View My Work
-                </a>
-                <a
-                  href="[RESUME_URL]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-3 border-2 border-purple text-purple rounded-full font-semibold hover:bg-purple hover:text-white transition-all glow-purple hoverable"
-                >
-                  Download Resume
-                </a>
+                <div style={{ display: 'flex', borderRadius: '9999px', overflow: 'hidden', border: '1.5px solid rgba(0,245,255,0.5)' }}>
+                  {/* My Work — solid cyan default, transparent on hover */}
+                  <a
+                    href="#projects"
+                    className="hoverable"
+                    style={{
+                      padding: '0.65rem 2rem',
+                      background: '#00f5ff',
+                      color: '#05050f',
+                      fontWeight: 700,
+                      fontSize: '0.9rem',
+                      letterSpacing: '0.03em',
+                      textDecoration: 'none',
+                      whiteSpace: 'nowrap',
+                      transition: 'background 0.25s ease, color 0.25s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'transparent'
+                      e.currentTarget.style.color = '#00f5ff'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#00f5ff'
+                      e.currentTarget.style.color = '#05050f'
+                    }}
+                  >
+                    My Work
+                  </a>
+                  {/* Divider */}
+                  <div style={{ width: '1px', background: 'rgba(0,245,255,0.4)' }} />
+                  {/* Resume — transparent default, solid cyan on hover */}
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hoverable"
+                    style={{
+                      padding: '0.65rem 2rem',
+                      background: 'transparent',
+                      color: '#00f5ff',
+                      fontWeight: 700,
+                      fontSize: '0.9rem',
+                      letterSpacing: '0.03em',
+                      textDecoration: 'none',
+                      whiteSpace: 'nowrap',
+                      transition: 'background 0.25s ease, color 0.25s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#00f5ff'
+                      e.currentTarget.style.color = '#05050f'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'transparent'
+                      e.currentTarget.style.color = '#00f5ff'
+                    }}
+                  >
+                    Resume
+                  </a>
+                </div>
               </motion.div>
 
-              {/* Social Links */}
+              {/* Social Icons */}
               <motion.div
-                className="flex gap-4 justify-center md:justify-start"
+                className="flex gap-5 justify-center md:justify-start"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
               >
-                <a
-                  href="[GITHUB_URL]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 glass rounded-full flex items-center justify-center text-cyan hover:bg-cyan hover:text-dark transition-all glow-cyan hoverable"
-                >
-                  <FiGithub size={20} />
-                </a>
-                <a
-                  href="[LINKEDIN_URL]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 glass rounded-full flex items-center justify-center text-cyan hover:bg-cyan hover:text-dark transition-all glow-cyan hoverable"
-                >
-                  <FiLinkedin size={20} />
-                </a>
-                <a
-                  href="mailto:[YOUR_EMAIL]"
-                  className="w-12 h-12 glass rounded-full flex items-center justify-center text-cyan hover:bg-cyan hover:text-dark transition-all glow-cyan hoverable"
-                >
-                  <FiMail size={20} />
-                </a>
+                {[
+                  { href: ' https://github.com/Dhirajchowdhury',   Icon: FiGithub,   label: 'GitHub'   },
+                  { href: ' https://www.linkedin.com/in/dhiraj-chowdhury-4a2a452b0', Icon: FiLinkedin, label: 'LinkedIn' },
+                  { href: 'mailto:dhirajchowdhury001@gmail.com ', Icon: FiMail,     label: 'Email'    },
+                ].map(({ href, Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={label !== 'Email' ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="hoverable"
+                    style={{
+                      width: '52px',
+                      height: '52px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'rgba(255,255,255,0.04)',
+                      border: '1px solid rgba(0,245,255,0.2)',
+                      color: '#00f5ff',
+                      transition: 'all 0.25s ease',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(0,245,255,0.12)'
+                      e.currentTarget.style.boxShadow  = '0 0 18px rgba(0,245,255,0.5), 0 0 40px rgba(0,245,255,0.2)'
+                      e.currentTarget.style.borderColor = 'rgba(0,245,255,0.6)'
+                      e.currentTarget.style.transform  = 'translateY(-3px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background  = 'rgba(255,255,255,0.04)'
+                      e.currentTarget.style.boxShadow   = 'none'
+                      e.currentTarget.style.borderColor = 'rgba(0,245,255,0.2)'
+                      e.currentTarget.style.transform   = 'translateY(0)'
+                    }}
+                  >
+                    <Icon size={24} />
+                  </a>
+                ))}
               </motion.div>
+
             </div>
           </div>
         </motion.div>
