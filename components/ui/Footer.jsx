@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Left: Logo */}
           <div>
             <h3 className="text-2xl font-space font-bold text-gradient-cyan mb-2">
-              [YOUR_NAME]
+              [Dhiraj Kumar Chowdhury]
             </h3>
             <p className="text-secondary text-sm">
               Full Stack Developer • AI/ML • Blockchain
