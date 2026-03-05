@@ -29,15 +29,15 @@ export default function Hero() {
     if (!roleRef.current) return
 
     // Blinking cursor animation
-    if (cursorRef.current) {
-      gsap.to(cursorRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'steps(1)',
-      })
-    }
+    // if (cursorRef.current) {
+    //   gsap.to(cursorRef.current, {
+    //     opacity: 0,
+    //     duration: 0.5,
+    //     repeat: -1,
+    //     yoyo: true,
+    //     ease: 'steps(1)',
+    //   })
+    // }
 
     const animateRole = () => {
       const letters = roleRef.current.querySelectorAll('.letter')
@@ -229,21 +229,7 @@ export default function Hero() {
                   className="text-xl md:text-3xl font-space font-semibold text-white"
                   style={{ minHeight: '2.5rem' }}
                 />
-                {/* Blinking cursor */}
-                <span
-                  ref={cursorRef}
-                  style={{
-                    display: 'inline-block',
-                    width: '3px',
-                    height: '1.6rem',
-                    backgroundColor: '#00f5ff',
-                    marginLeft: '4px',
-                    borderRadius: '2px',
-                    boxShadow: '0 0 8px #00f5ff',
-                    flexShrink: 0,
-                    alignSelf: 'center',
-                  }}
-                />
+               
               </div>
 
               {/* Bio */}
