@@ -28,7 +28,7 @@ const projects = [
     tech: ['React', 'Node.js', 'MongoDB', 'Solidity', 'Ethers.js', 'React', 'TensorFlow'],
     status: 'completed',
     github: 'https://github.com/Dhirajchowdhury/bondbuy',
-    demo: 'https://github.com/Dhirajchowdhury/bondbuy',
+    demo: 'https://bondbuy-eight.vercel.app/',
     color: '#a020f0',
   },
   {
