@@ -41,7 +41,7 @@ const projects = [
     tech: ['React', 'Node.js', 'MongoDB', 'OpenAI API'],
     status: 'in-progress',
     github: 'https://github.com/Dhirajchowdhury/Stockey',
-    demo: 'https://github.com/Dhirajchowdhury/Stockey#',
+    demo: 'Under maintenance',
     color: '#00ff88',
   },
   {
