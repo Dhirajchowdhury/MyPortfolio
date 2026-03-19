@@ -7,7 +7,7 @@ import gsap from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
 import dynamic from 'next/dynamic'
 
-const HeroParticles = dynamic(() => import('../three/HeroParticles'), { ssr: false })
+const HeroParticles = dynamic(() => import('../three/HeroParticles'), { ssr: false }) // ssr: false means server side rendering will not occur bcz three can't access docs and windows
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(TextPlugin)
@@ -28,16 +28,6 @@ export default function Hero() {
   useEffect(() => {
     if (!roleRef.current) return
 
-    // Blinking cursor animation
-    // if (cursorRef.current) {
-    //   gsap.to(cursorRef.current, {
-    //     opacity: 0,
-    //     duration: 0.5,
-    //     repeat: -1,
-    //     yoyo: true,
-    //     ease: 'steps(1)',
-    //   })
-    // }
 
     const animateRole = () => {
       const letters = roleRef.current.querySelectorAll('.letter')
@@ -136,7 +126,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Main HUD Container */}
+      
      {/* Main HUD Container */}
         <div className="relative z-10 w-[90%] md:w-[75%] max-w-5xl" style={{ marginTop: '2.5rem' }}>
         <motion.div
@@ -166,7 +156,7 @@ export default function Hero() {
                 }}
               >
                 <img
-                  src="/My_image02.jpeg"
+                  src="/My_image04.jpg"
                   alt="Dhiraj Kumar Chowdhury"
                   className="w-full h-full object-cover"
                 />

@@ -3,12 +3,11 @@
 import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
-// ── Project data ─────────────────────────────────────────────────
 const projects = [
   {
     id: 1,
     title: 'Kidguides',
-    tagline: 'This is my Startup and Project as well ',
+    tagline: 'This is my Startup and Project as well',
     description:
       'KidGuides is a tech-enabled offline tutoring platform connecting students (Class 0–7) with mentors from reputed colleges. The website manages student registrations, mentor onboarding, batch scheduling, and attendance tracking. It also provides a dashboard for performance monitoring and communication between parents, mentors, and admins, ensuring organized and scalable learning support.',
     image: '/Kidguides.png',
@@ -17,6 +16,8 @@ const projects = [
     github: 'https://github.com/Dhirajchowdhury/Kidguides',
     demo: 'https://github.com/Dhirajchowdhury/Kidguides',
     color: '#00f5ff',
+    imagePosition: 'top center',
+    imageScale: 1.0,
   },
   {
     id: 2,
@@ -25,24 +26,28 @@ const projects = [
     description:
       'BondBuy is a fintech platform that enables fractional investment in government bonds, making traditionally high-value instruments accessible to small investors. It allows users to invest through SIP-based contributions, lowering the entry barrier and encouraging disciplined investing. The platform uses blockchain-backed secure payment and record systems to ensure transparency, trust, and tamper-proof transactions',
     image: '/Bondbuy.png',
-    tech: ['React', 'Node.js', 'MongoDB', 'Solidity', 'Ethers.js', 'React', 'TensorFlow'],
+    tech: ['React', 'Node.js', 'MongoDB', 'Solidity', 'Ethers.js', 'TensorFlow'],
     status: 'completed',
     github: 'https://github.com/Dhirajchowdhury/bondbuy',
     demo: 'https://bondbuy-eight.vercel.app/',
     color: '#a020f0',
+    imagePosition: 'top center',
+    imageScale: 1.0,
   },
   {
     id: 3,
     title: 'Stockey',
     tagline: 'Clearing ur Vision in stocks',
     description:
-      'Stockey is a platform designed to help users understand and analyze stocks more easily. It simplifies market data by showing clear trends and insights, making it easier for beginners to study stock movements. The platform also generates handmade-style PPT reports with all key details, helping users quickly learn about a company’s performance, trends, and important financial metrics.',
+      "Stockey is a platform designed to help users understand and analyze stocks more easily. It simplifies market data by showing clear trends and insights, making it easier for beginners to study stock movements. The platform also generates handmade-style PPT reports with all key details, helping users quickly learn about a company's performance, trends, and important financial metrics.",
     image: '/Stockey.png',
     tech: ['React', 'Node.js', 'MongoDB', 'OpenAI API'],
     status: 'in-progress',
     github: 'https://github.com/Dhirajchowdhury/Stockey',
     demo: 'Under maintenance',
     color: '#00ff88',
+    imagePosition: 'top center',
+    imageScale: 1.0,
   },
   {
     id: 4,
@@ -56,10 +61,13 @@ const projects = [
     github: 'https://github.com/Dhirajchowdhury/AyurSutra',
     demo: 'https://github.com/Dhirajchowdhury/AyurSutra',
     color: '#f59e0b',
+    imagePosition: 'top center',
+    imageScale: 1.0,
   },
 ]
 
-// ── Flip Card ────────────────────────────────────────────────────
+const DOTS = ['#ff5f57', '#febc2e', '#28c840']
+
 function ProjectCard({ project, index }) {
   return (
     <motion.div
@@ -92,106 +100,178 @@ function ProjectCard({ project, index }) {
             inset: 0,
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
-            borderRadius: '20px',
+            borderRadius: '30px',
             overflow: 'hidden',
             border: `1px solid ${project.color}22`,
+            background: `linear-gradient(135deg, ${project.color}22, rgba(10,10,15,0.9))`,
           }}
         >
-          {/* Project image */}
-          <img
-            src={project.image}
-            alt={project.title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            onError={(e) => {
-              e.target.style.display = 'none'
-              e.target.parentNode.style.background =
-                `linear-gradient(135deg, ${project.color}22, rgba(10,10,15,0.9))`
-            }}
-          />
 
-          {/* Gradient overlay */}
+          {/* ── Image zone with browser chrome ── */}
           <div style={{
-            position: 'absolute', inset: 0,
-            background: `linear-gradient(180deg,
-              transparent 30%,
-              rgba(10,10,15,0.7) 65%,
-              rgba(10,10,15,0.97) 100%
-            )`,
-          }} />
-
-          {/* Top-left status badge */}
-          <div style={{
-            position: 'absolute', top: '1rem', left: '1rem',
-            display: 'flex', alignItems: 'center', gap: '6px',
-            background: 'rgba(10,10,15,0.75)',
-            backdropFilter: 'blur(8px)',
-            border: `1px solid ${project.status === 'completed' ? '#00ff88' : '#f59e0b'}44`,
-            borderRadius: '9999px',
-            padding: '4px 12px',
-            fontSize: '0.65rem',
-            fontFamily: 'monospace',
-            color: project.status === 'completed' ? '#00ff88' : '#f59e0b',
-            letterSpacing: '0.08em',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: '110px',
+            borderRadius: '30px 30px 0 0',
+            overflow: 'hidden',
+            background: '#0d0f1a',
           }}>
-            <span style={{
-              width: '6px', height: '6px', borderRadius: '50%',
-              background: project.status === 'completed' ? '#00ff88' : '#f59e0b',
-              boxShadow: `0 0 6px ${project.status === 'completed' ? '#00ff88' : '#f59e0b'}`,
-              animation: project.status === 'in-progress' ? 'pulse 1.5s infinite' : 'none',
+            {/* Browser chrome bar */}
+            <div style={{
+              height: '24px',
+              background: '#13151f',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0 10px',
+              gap: '5px',
+              borderBottom: `1px solid ${project.color}18`,
+              flexShrink: 0,
+            }}>
+              {DOTS.map(c => (
+                <div key={c} style={{
+                  width: '7px',
+                  height: '7px',
+                  borderRadius: '50%',
+                  background: c,
+                  opacity: 0.75,
+                }} />
+              ))}
+              <div style={{
+                flex: 1,
+                height: '9px',
+                borderRadius: '4px',
+                background: 'rgba(255,255,255,0.06)',
+                margin: '0 8px',
+              }} />
+            </div>
+
+            {/* Screenshot */}
+            <div style={{
+              position: 'absolute',
+              top: '24px',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              overflow: 'hidden',
+            }}>
+              <img
+                src={project.image}
+                alt={project.title}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: project.imagePosition || 'top center',
+                  transform: `scale(${project.imageScale || 0.75})`,
+                  transformOrigin: 'top center',
+                  display: 'block',
+                }}
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                }}
+              />
+            </div>
+
+            {/* Fade at bottom of image zone */}
+            <div style={{
+              position: 'absolute',
+              bottom: 0, left: 0, right: 0,
+              height: '50px',
+              background: 'linear-gradient(to bottom, transparent, rgba(10,10,15,0.97))',
+              pointerEvents: 'none',
             }} />
-            {project.status === 'completed' ? 'Completed' : 'In Progress'}
           </div>
 
-          {/* Bottom content */}
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem' }}>
-            {/* Color accent line */}
+          {/* ── Bottom text overlay ── */}
+          <div style={{
+            position: 'absolute',
+            bottom: 0, left: 0, right: 0,
+            padding: '1rem 1.5rem 1.3rem',
+            background: 'rgba(10,10,15,0.98)',
+          }}>
+            {/* Accent line */}
             <div style={{
-              width: '32px', height: '3px', borderRadius: '9999px',
+              width: '28px', height: '2px', borderRadius: '9999px',
               background: project.color,
-              boxShadow: `0 0 10px ${project.color}`,
-              marginBottom: '0.6rem',
+              boxShadow: `0 0 8px ${project.color}`,
+              marginBottom: '0.45rem',
             }} />
-            <h3 style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 800, fontSize: '1.4rem',
-              color: '#fff', marginBottom: '0.3rem',
-            }}>
-              {project.title}
-            </h3>
-            <p style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: '0.82rem',
-              color: 'rgba(255,255,255,0.5)',
-              marginBottom: '0.9rem',
-            }}>
-              {project.tagline}
-            </p>
 
-            {/* Tech badges */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              {project.tech.map((t, i) => (
+            {/* Title row + status badge */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '0.4rem',
+              gap: '8px',
+            }}>
+              <h3 style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 800,
+                fontSize: '1.25rem',
+                color: '#fff',
+                margin: 0,
+              }}>
+                {project.title}
+              </h3>
+
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '5px',
+                background: 'rgba(10,10,15,0.6)',
+                border: `1px solid ${project.status === 'completed' ? '#00ff88' : '#f59e0b'}44`,
+                borderRadius: '9999px',
+                padding: '3px 10px',
+                fontSize: '0.6rem',
+                fontFamily: 'monospace',
+                color: project.status === 'completed' ? '#00ff88' : '#f59e0b',
+                letterSpacing: '0.08em',
+                flexShrink: 0,
+              }}>
+                <span style={{
+                  width: '5px', height: '5px', borderRadius: '50%',
+                  background: project.status === 'completed' ? '#00ff88' : '#f59e0b',
+                  boxShadow: `0 0 5px ${project.status === 'completed' ? '#00ff88' : '#f59e0b'}`,
+                  animation: project.status === 'in-progress' ? 'pulse 1.5s infinite' : 'none',
+                }} />
+                {project.status === 'completed' ? 'Completed' : 'In Progress'}
+              </div>
+            </div>
+
+            {/* Tech badges — max 4, then "+N more" */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '0.5rem' }}>
+              {project.tech.slice(0, 4).map((t, i) => (
                 <span key={`${t}-${i}`} style={{
-                  fontSize: '0.62rem',
+                  fontSize: '0.6rem',
                   fontFamily: 'monospace',
                   color: project.color,
                   background: `${project.color}12`,
                   border: `1px solid ${project.color}30`,
                   borderRadius: '4px',
-                  padding: '2px 8px',
+                  padding: '2px 7px',
                   letterSpacing: '0.04em',
                 }}>
                   {t}
                 </span>
               ))}
+              {project.tech.length > 4 && (
+                <span style={{
+                  fontSize: '0.6rem', fontFamily: 'monospace',
+                  color: 'rgba(255,255,255,0.3)',
+                  padding: '2px 4px',
+                }}>
+                  +{project.tech.length - 4} more
+                </span>
+              )}
             </div>
 
-            {/* Hover hint */}
             <p style={{
-              marginTop: '0.8rem',
-              fontSize: '0.62rem',
-              color: 'rgba(255,255,255,0.25)',
+              fontSize: '0.58rem',
+              color: 'rgba(255,255,255,0.2)',
               fontFamily: 'monospace',
               letterSpacing: '0.08em',
+              margin: 0,
             }}>
               HOVER TO SEE MORE →
             </p>
@@ -223,7 +303,6 @@ function ProjectCard({ project, index }) {
             background: `linear-gradient(90deg, transparent, ${project.color}, transparent)`,
           }} />
 
-          {/* Back content */}
           <div>
             <div style={{
               display: 'inline-block',
@@ -254,7 +333,6 @@ function ProjectCard({ project, index }) {
               {project.description}
             </p>
 
-            {/* Tech stack */}
             <div style={{ marginBottom: '1.5rem' }}>
               <div style={{
                 fontSize: '0.6rem', fontFamily: 'monospace',
@@ -337,11 +415,11 @@ function ProjectCard({ project, index }) {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = `${project.color}30`
-                e.currentTarget.style.boxShadow  = `0 0 14px ${project.color}33`
+                e.currentTarget.style.boxShadow = `0 0 14px ${project.color}33`
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = `${project.color}18`
-                e.currentTarget.style.boxShadow  = 'none'
+                e.currentTarget.style.boxShadow = 'none'
               }}
             >
               <FiExternalLink size={16} /> Live Demo
@@ -350,7 +428,6 @@ function ProjectCard({ project, index }) {
         </div>
       </div>
 
-      {/* CSS flip on hover */}
       <style>{`
         .group:hover .flip-inner {
           transform: rotateY(180deg);
@@ -364,7 +441,6 @@ function ProjectCard({ project, index }) {
   )
 }
 
-// ── Main Section ─────────────────────────────────────────────────
 export default function Projects() {
   return (
     <section
@@ -387,7 +463,6 @@ export default function Projects() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        {/* ── Header ── */}
         <motion.div
           style={{ textAlign: 'center', marginBottom: '3.5rem' }}
           initial={{ opacity: 0, y: 30 }}
@@ -395,9 +470,6 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div style={{}}>
-
-          </div>
           <h2 style={{
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
@@ -414,7 +486,6 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* ── 2×2 Grid ── */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(520px, 1fr))',

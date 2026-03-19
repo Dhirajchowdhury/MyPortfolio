@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiMapPin, FiCalendar, FiAward, FiCode } from 'react-icons/fi'
+import { Center } from '@react-three/drei'
 
 // ── Experience / Hackathon data ──────────────────────────────────
 const experiences = [
@@ -393,10 +394,14 @@ export default function Experience() {
               background: '#00f5ff',
               boxShadow: '0 0 16px #00f5ff, 0 0 32px #00f5ff55',
               border: '3px solid #0a0a0f',
+              
             }}
           />
+          
         </div>
-
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 'clamp(0.8rem, 3vw, 1.2rem)', fontWeight: 200, background: 'linear-gradient(135deg, #ffffff 30%, #00f5ff)',WebkitBackgroundClip: 'text',WebkitTextFillColor: 'transparent',marginBottom: '0.75rem',fontFamily: "'Space Grotesk', sans-serif",marginTop: '0.75rem',textAlign: 'center', }}>
+            More to go ...
+          </p>
       </div>
     </section>
   )

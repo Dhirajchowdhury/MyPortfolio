@@ -5,10 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { FiGithub, FiLinkedin, FiMail, FiSend, FiUser, FiMessageSquare, FiCheckCircle, FiAlertCircle } from 'react-icons/fi'
 
-// ─────────────────────────────────────────────────────────────────
-// 🔧 REPLACE THESE with your actual EmailJS credentials
-// Sign up free at https://www.emailjs.com
-// ─────────────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID  = 'will update In Future '
 const EMAILJS_TEMPLATE_ID = 'will update In Future '
 const EMAILJS_PUBLIC_KEY  = 'will update In Future '
