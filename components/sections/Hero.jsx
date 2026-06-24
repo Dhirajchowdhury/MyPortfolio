@@ -230,7 +230,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                2nd-year CSE student at Heritage Institute Of Technology, Kolkata.
+                3rd-year CSE student at Heritage Institute Of Technology, Kolkata.
                 Building digital experiences across Frontend, Full Stack, AI/ML, and Blockchain.
               </motion.p>
 
