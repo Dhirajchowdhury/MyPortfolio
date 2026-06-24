@@ -228,3 +228,6 @@ code, pre {
   background: var(--accent-cyan);
   color: var(--bg-dark);
 }
+body {
+  cursor: none;
+}
