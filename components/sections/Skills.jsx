@@ -4,63 +4,44 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import {
   SiJavascript, SiReact, SiNextdotjs, SiTailwindcss, SiHtml5,
-  SiNodedotjs, SiExpress, SiMongodb,
-  SiPostman, SiPython, SiOpenai, SiSolidity,
-  SiEthereum, SiGit, SiGithub, SiFigma, SiVercel,
-  SiGreensock, SiTypescript, SiDocker, SiPostgresql,
-  SiTensorflow,
+  SiNodedotjs, SiMongodb,
+  SiGit, SiGithub, SiVercel,
+  SiGreensock, SiTypescript,
 } from 'react-icons/si'
-import { FaCss3Alt, FaEthereum } from 'react-icons/fa'
+import { FaCss3Alt } from 'react-icons/fa'
 import { TbBrandFramerMotion, TbBrandThreejs } from 'react-icons/tb'
 import { VscCode } from 'react-icons/vsc'
-import { BiHardHat } from 'react-icons/bi'
 
 const skillsData = [
-  { name: 'JavaScript',    Icon: SiJavascript,        color: '#F7DF1E', domain: 'frontend',   proficiency: 95 },
-  { name: 'React',         Icon: SiReact,             color: '#61DAFB', domain: 'frontend',   proficiency: 75 },
+  { name: 'JavaScript',    Icon: SiJavascript,        color: '#F7DF1E', domain: 'frontend',   proficiency: 90 },
+  { name: 'TypeScript',    Icon: SiTypescript,        color: '#3178C6', domain: 'frontend',   proficiency: 75 },
+  { name: 'React',         Icon: SiReact,             color: '#61DAFB', domain: 'frontend',   proficiency: 85 },
   { name: 'Next.js',       Icon: SiNextdotjs,         color: '#ffffff', domain: 'frontend',   proficiency: 80 },
-  { name: 'TypeScript',    Icon: SiTypescript,        color: '#3178C6', domain: 'frontend',   proficiency: 80 },
-  { name: 'Tailwind CSS',  Icon: SiTailwindcss,       color: '#06B6D4', domain: 'frontend',   proficiency: 90 },
-  { name: 'HTML5',         Icon: SiHtml5,             color: '#E34F26', domain: 'frontend',   proficiency: 95 },
-  { name: 'CSS3',          Icon: FaCss3Alt,           color: '#1572B6', domain: 'frontend',   proficiency: 90 },
-  { name: 'GSAP',          Icon: SiGreensock,         color: '#88CE02', domain: 'frontend',   proficiency: 75 },
-  { name: 'Framer Motion', Icon: TbBrandFramerMotion, color: '#0055FF', domain: 'frontend',   proficiency: 78 },
-  { name: 'Three.js',      Icon: TbBrandThreejs,      color: '#ffffff', domain: 'frontend',   proficiency: 30 },
-  { name: 'Node.js',       Icon: SiNodedotjs,         color: '#339933', domain: 'backend',    proficiency: 80 },
-  { name: 'Express.js',    Icon: SiExpress,           color: '#cccccc', domain: 'backend',    proficiency: 78 },
-  { name: 'MongoDB',       Icon: SiMongodb,           color: '#47A248', domain: 'backend',    proficiency: 75 },
-  { name: 'PostgreSQL',    Icon: SiPostgresql,        color: '#4169E1', domain: 'backend',    proficiency: 60 },
-  { name: 'REST APIs',     Icon: SiPostman,           color: '#FF6C37', domain: 'backend',    proficiency: 82 },
-  { name: 'Docker',        Icon: SiDocker,            color: '#2496ED', domain: 'backend',    proficiency: 35 },
-  { name: 'Python',        Icon: SiPython,            color: '#3776AB', domain: 'aiml',       proficiency: 78 },
-  { name: 'TensorFlow',    Icon: SiTensorflow,        color: '#FF6F00', domain: 'aiml',       proficiency: 25 },
-  { name: 'OpenAI API',    Icon: SiOpenai,            color: '#ffffff', domain: 'aiml',       proficiency: 72 },
-  { name: 'Solidity',      Icon: SiSolidity,          color: '#9999aa', domain: 'blockchain', proficiency: 60 },
-  { name: 'Ethers.js',     Icon: SiEthereum,          color: '#627EEA', domain: 'blockchain', proficiency: 55 },
-  { name: 'Web3.js',       Icon: FaEthereum,          color: '#F16822', domain: 'blockchain', proficiency: 60 },
-  { name: 'Hardhat',       Icon: BiHardHat,           color: '#ffc517', domain: 'blockchain', proficiency: 10 },
+  { name: 'Tailwind CSS',  Icon: SiTailwindcss,       color: '#06B6D4', domain: 'frontend',   proficiency: 85 },
+  { name: 'HTML5',         Icon: SiHtml5,             color: '#E34F26', domain: 'frontend',   proficiency: 90 },
+  { name: 'CSS3',          Icon: FaCss3Alt,           color: '#1572B6', domain: 'frontend',   proficiency: 85 },
+  { name: 'Framer Motion', Icon: TbBrandFramerMotion, color: '#0055FF', domain: 'frontend',   proficiency: 70 },
+  { name: 'GSAP',          Icon: SiGreensock,         color: '#88CE02', domain: 'frontend',   proficiency: 65 },
+  { name: 'Three.js',      Icon: TbBrandThreejs,      color: '#ffffff', domain: 'frontend',   proficiency: 45 },
+  { name: 'Node.js',       Icon: SiNodedotjs,         color: '#339933', domain: 'backend',    proficiency: 70 },
+  { name: 'MongoDB',       Icon: SiMongodb,           color: '#47A248', domain: 'backend',    proficiency: 65 },
   { name: 'Git',           Icon: SiGit,               color: '#F05032', domain: 'tools',      proficiency: 85 },
-  { name: 'GitHub',        Icon: SiGithub,            color: '#ffffff', domain: 'tools',      proficiency: 88 },
-  { name: 'Figma',         Icon: SiFigma,             color: '#F24E1E', domain: 'tools',      proficiency: 35 },
-  { name: 'VS Code',       Icon: VscCode,             color: '#007ACC', domain: 'tools',      proficiency: 95 },
-  { name: 'Vercel',        Icon: SiVercel,            color: '#ffffff', domain: 'tools',      proficiency: 80 },
+  { name: 'GitHub',        Icon: SiGithub,            color: '#ffffff', domain: 'tools',      proficiency: 80 },
+  { name: 'VS Code',       Icon: VscCode,             color: '#007ACC', domain: 'tools',      proficiency: 90 },
+  { name: 'Vercel',        Icon: SiVercel,            color: '#ffffff', domain: 'tools',      proficiency: 75 },
 ]
 
 const filters = [
-  { id: 'all',        label: 'All'        },
-  { id: 'frontend',  label: 'Frontend'   },
-  { id: 'backend',   label: 'Backend'    },
-  { id: 'aiml',      label: 'AI / ML'    },
-  { id: 'blockchain',label: 'Blockchain' },
-  { id: 'tools',     label: 'Tools'      },
+  { id: 'all',       label: 'All'      },
+  { id: 'frontend',  label: 'Frontend' },
+  { id: 'backend',   label: 'Backend'  },
+  { id: 'tools',     label: 'Tools'    },
 ]
 
 const domainColors = {
-  frontend:   '#00f5ff',
-  backend:    '#ffffff',
-  aiml:       '#00ff88',
-  blockchain: '#a020f0',
-  tools:      '#f59e0b',
+  frontend: '#00f5ff',
+  backend:  '#ffffff',
+  tools:    '#f59e0b',
 }
 
 const levelLabel = (p) => {
@@ -123,7 +104,7 @@ function SkillCard({ skill, index }) {
       style={{
         position: 'relative',
         borderRadius: '16px',
-        padding: '1.4rem 1rem 1.1rem',
+        padding: '1.8rem 1.2rem 1.4rem',
         background: hovered
           ? `linear-gradient(135deg, ${accent}0e 0%, rgba(10,10,15,0.95) 100%)`
           : 'rgba(255,255,255,0.03)',
@@ -136,7 +117,7 @@ function SkillCard({ skill, index }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '0.55rem',
+        gap: '0.75rem',
         overflow: 'hidden',
       }}
     >
@@ -151,7 +132,7 @@ function SkillCard({ skill, index }) {
       {/* Magnetic icon */}
       <motion.div ref={iconRef} style={{ x: sx, y: sy }}>
         <skill.Icon
-          size={42}
+          size={48}
           style={{
             color: skill.color,
             filter: hovered
@@ -165,7 +146,7 @@ function SkillCard({ skill, index }) {
 
       {/* Name */}
       <span style={{
-        fontSize: '0.78rem',
+        fontSize: '0.85rem',
         fontFamily: "'Space Grotesk', sans-serif",
         fontWeight: 600,
         color: hovered ? '#ffffff' : 'rgba(255,255,255,0.72)',
@@ -334,8 +315,8 @@ export default function Skills() {
             key={activeFilter}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-              gap: '1rem',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))',
+              gap: '1.5rem',
             }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -357,9 +338,9 @@ export default function Skills() {
           transition={{ delay: 0.4 }}
         >
           {[
-            { label: 'Total Skills',  value: skillsData.length,                                    color: '#00f5ff' },
-            { label: 'Domains',       value: 5,                                                     color: '#a020f0' },
-            { label: 'Advanced+',     value: skillsData.filter(s => s.proficiency >= 75).length,    color: '#00ff88' },
+            { label: 'Total Skills',  value: '16+', color: '#00f5ff' },
+            { label: 'Domains',       value: '3',   color: '#a020f0' },
+            { label: 'Advanced+',     value: '8+',  color: '#00ff88' },
           ].map(({ label, value, color }) => (
             <div key={label} style={{ textAlign: 'center' }}>
               <div style={{
@@ -367,7 +348,7 @@ export default function Skills() {
                 fontSize: '2.2rem', fontWeight: 800,
                 color, textShadow: `0 0 20px ${color}55`,
               }}>
-                {value}+
+                {value}
               </div>
               <div style={{
                 fontFamily: 'monospace', fontSize: '0.62rem',

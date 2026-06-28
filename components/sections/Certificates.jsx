@@ -9,6 +9,8 @@ const certificates = [
   '/certificate04.pdf',
   '/certificate05.pdf',
   '/certificate06.pdf',
+  '/certificate07.pdf',
+  '/certificate08.png',
 ]
 
 // To ensure a seamless marquee, we duplicate the list so the animation can loop

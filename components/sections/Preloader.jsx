@@ -12,9 +12,14 @@ export default function Preloader({ onComplete }) {
   const barRef = useRef(null);
   const bikeRef = useRef(null);
   const percentRef = useRef(null);
+  const audioPlayedRef = useRef(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    // Preload the audio to ensure no playback delay
+    const bikeAudio = new Audio('/bike_sound_01.mp3');
+    bikeAudio.preload = 'auto';
 
     const tl = gsap.timeline();
     const userName = 'Dhiraj Kumar Chowdhury';
@@ -50,16 +55,19 @@ export default function Preloader({ onComplete }) {
 
     glitchDecode();
 
+    const animationDuration = 3.5;
+    const animationStart = 0.8;
+
     tl.to(
       barRef.current,
-      { width: '100%', duration: 3.5, ease: 'power2.inOut' },
-      0.8
+      { width: '100%', duration: animationDuration, ease: 'power2.inOut' },
+      animationStart
     );
 
     tl.to(
       bikeRef.current,
-      { left: 'calc(100% - 2.5rem)', duration: 3.5, ease: 'power2.inOut' },
-      0.8
+      { left: 'calc(100% - 2.5rem)', duration: animationDuration, ease: 'power2.inOut' },
+      animationStart
     );
 
     const counter = { value: 0 };
@@ -67,14 +75,21 @@ export default function Preloader({ onComplete }) {
       counter,
       {
         value: 100,
-        duration: 3.5,
+        duration: animationDuration,
         ease: 'power2.inOut',
         onUpdate: () => {
           percentRef.current.textContent = `${Math.floor(counter.value)}%`;
         },
       },
-      0.8
+      animationStart
     );
+
+    tl.call(() => {
+      if (!audioPlayedRef.current) {
+        audioPlayedRef.current = true;
+        bikeAudio.play().catch((e) => console.warn('Audio playback failed:', e));
+      }
+    }, [], animationStart);
 
     tl.to({}, {}, '+=0.3');
 
@@ -85,9 +100,17 @@ export default function Preloader({ onComplete }) {
       ease: 'power2.in',
       onComplete: () => {
         if (onComplete) onComplete();
-        containerRef.current.style.display = 'none';
+        if (containerRef.current) containerRef.current.style.display = 'none';
+        bikeAudio.pause();
+        bikeAudio.currentTime = 0;
       },
     });
+
+    return () => {
+      tl.kill();
+      bikeAudio.pause();
+      bikeAudio.currentTime = 0;
+    };
   }, [onComplete]);
 
   return (
